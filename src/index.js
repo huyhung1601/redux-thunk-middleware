@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
 import App from "./App";
 import { counterReducer } from "./reducer";
 
@@ -27,7 +28,7 @@ const capAtTen= (store) => (next) => (action) => {
 //     }
 //   }
 // }
-const store = createStore(counterReducer, applyMiddleware(myLogger, secondMiddleware, capAtTen));
+const store = createStore(counterReducer, applyMiddleware(myLogger, secondMiddleware, capAtTen,logger));
 
 ReactDOM.render(
   <Provider store={store}>
